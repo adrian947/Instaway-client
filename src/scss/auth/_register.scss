@@ -1,0 +1,74 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.register {
+  &__title {
+    color: v.$action2;
+  }
+  &__place {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+
+    label {
+      @include m.telefono {
+        display: none !important;
+      }
+      @include m.tablet {
+        display: none !important;
+      }
+      @include m.desktop {
+        display: flex !important;
+      }
+    }
+    input {
+      @include m.telefono {
+        width: 100% !important;
+      }
+      @include m.tablet {
+        width: 100% !important;
+      }
+      @include m.desktop {
+        width: 78% !important;
+      }
+    }
+  }
+  &__button {
+    background-color: v.$action !important;
+    color: #fff !important;
+    &:hover {
+      cursor: pointer;
+      background-color: darken(v.$action, 10) !important;
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__error {
+    background-color: v.$danger;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    @include m.telefono {
+      width: 100%;
+    }
+    @include m.tablet {
+      width: 100%;
+    }
+    @include m.desktop {
+      width: 78%;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #fff;
+    }
+  }
+  &__error--response {
+    background-color: v.$danger;
+    padding: 0.5rem;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+}

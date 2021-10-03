@@ -1,0 +1,89 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.login {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+
+  @include m.tablet {
+    height: 100vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  @include m.desktop {
+    flex-direction: row;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+
+    @include m.telefono {
+      flex-direction: column;
+    }
+  }
+  &__logo {
+    margin-right: 4rem;
+    max-width: 15%;
+    @include m.tablet {
+      max-width: 30%;
+    }
+    @include m.telefono {
+      margin: 0 auto;
+      max-width: 50%;
+    }
+  }
+  &__form {
+    border: 2px solid v.$border-gray;
+    border-radius: 0 20px 0 20px;
+    padding: 1rem;
+
+    @include m.telefono {
+      margin-top: 2rem;
+    }
+  }
+  &__banner {
+    p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 0;
+      padding: 0.5rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: v.$action;
+      }
+    }
+  }
+  &__containerbutton {
+    margin-top: 1rem;
+    border: 2px solid v.$border-gray;
+    padding: 1.2rem;
+    span{
+      margin-right: 1rem;
+      font-family: 'Roboto';  
+    }
+    input{
+      background-color: #fff;
+      border: none;
+      font-size: 1.2rem;
+      color: v.$action;
+      transition: transform .3s ease;
+
+      &:hover{
+        color : darken(v.$action, 10);
+        transform: scale(1.2);
+        cursor: pointer;
+        
+      }
+    }
+  }
+}
