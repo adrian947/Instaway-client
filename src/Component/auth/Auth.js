@@ -6,6 +6,7 @@ import { LoginForm } from './LoginForm';
 
 export const Auth = () => {
   const [showLogin, setShowLogin] = useState(false);
+  console.log('hola')
 
   return (
     <header className="login contenedor">
