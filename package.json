@@ -20,6 +20,7 @@
     "sass": "^1.42.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.4",
+    "spinners-react": "^1.0.6",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },

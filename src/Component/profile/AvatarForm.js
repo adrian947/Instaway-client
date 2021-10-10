@@ -1,28 +1,65 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { useMutation } from "@apollo/client";
-import { UPDATE_AVATAR } from "./../../gql/user";
+import { UPDATE_AVATAR, GET_USER, DELETE_AVATAR } from "./../../gql/user";
 import { fileUpload } from "../../helpers/fileUpload";
 import { StateContext } from "./../../hooks/useAuth";
-import { SpinnerCircular } from 'spinners-react';
-
+import { SpinnerCircular } from "spinners-react";
+import { toast } from "react-toastify";
 
 export const AvatarForm = ({ setShow }) => {
-  const [UpdateAvatar] = useMutation(UPDATE_AVATAR);
-
+  const auths = StateContext();
+  const { setImage, auth } = auths;
   const [loading, setLoading] = useState(false);
 
-  const auth = StateContext();
-  const { setImage } = auth;
+  //Update Cache Apollo
+  const [UpdateAvatar] = useMutation(UPDATE_AVATAR, {
+    update(cache, { data: { updateAvatar } }) {
+      const { getUser } = cache.readQuery({
+        query: GET_USER,
+        variables: {
+          userName: auth.userName,
+        },
+      });
+
+      cache.writeQuery({
+        query: GET_USER,
+        variables: {
+          userName: auth.userName,
+        },
+        data: {
+          getUser: { ...getUser, avatar: updateAvatar.urlAvatar },
+        },
+      });
+    },
+  });
+
+  const [deleteAvatar] = useMutation(DELETE_AVATAR, {
+    update(cache, {data: {deleteAvatar}}){
+      const { getUser } = cache.readQuery({
+        query: GET_USER,
+        variables: {
+          userName: auth.userName,
+        },
+      });
+      cache.writeQuery({
+        query: GET_USER,
+        variables: {
+          userName: auth.userName,
+        },
+        data: {
+          getUser: { ...getUser, avatar: "" },
+        },
+      });
+    }
+  });
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles[0];
-    console.log("file", file);
 
     try {
       setLoading(true);
       const respCloudinary = await fileUpload(file);
-      console.log("cloudy", respCloudinary);
       setImage(respCloudinary);
 
       const { data } = await UpdateAvatar({
@@ -36,6 +73,27 @@ export const AvatarForm = ({ setShow }) => {
       if (data.updateAvatar) {
         setLoading(false);
         setShow(false);
+        toast.success("Avatar changed successfully ", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else {
+        setLoading(false);
+        setShow(false);
+        toast.warning("Avatar changed Error ", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -50,15 +108,38 @@ export const AvatarForm = ({ setShow }) => {
     onDrop,
   });
 
+  const handleDelete = async () => {
+    try {
+      const { data } = await deleteAvatar();
+      setShow(false);
+
+      if (!data.deleteAvatar) {
+        toast.warning("Avatar delete Error ", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <div className="avatarForm ">
       {loading ? (
-        <button {...getRootProps()}><SpinnerCircular size={50} thickness={100} speed={100} color="rgba(57, 86, 172, 1)" secondaryColor="rgba(0, 0, 0, 0.44)" /></button>
+        <button {...getRootProps()}>
+          <SpinnerCircular size="15" color="#1895F6" />
+        </button>
       ) : (
         <button {...getRootProps()}>Add picture</button>
       )}
 
-      <button>Delete picture</button>
+      <button onClick={handleDelete}>Delete picture</button>
       <button onClick={() => setShow(false)}>Cancel</button>
 
       <input {...getInputProps()} />
