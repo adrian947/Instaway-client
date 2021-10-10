@@ -1,0 +1,45 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.avatarForm {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    background-color: #fff;
+    width: 100%;
+    border: none;
+    padding: 1rem;
+    font-family: v.$fuente_principal;
+    cursor: pointer;
+    border-bottom: 1px solid v.$border-gray;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &:nth-child(1) {
+      color: v.$action;
+      &:hover {
+        background-color: v.$action;
+        color: #fff;
+      }
+    }
+    &:nth-child(2) {
+      color: v.$danger;
+      &:hover {
+        background-color: v.$danger;
+        color: #fff;
+      }
+    }
+    &:nth-child(3) {
+      color: v.$font-grey;
+      &:hover {
+        background-color: v.$font-grey;
+        color: rgb(0, 0, 0);
+      }
+    }
+
+  }
+  button:nth-last-child(1) {
+    border-bottom: none;
+  }
+}

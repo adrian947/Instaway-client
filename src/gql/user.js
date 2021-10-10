@@ -13,3 +13,26 @@ export const REGISTER = gql`
   }
 `;
 
+export const GET_USER = gql`
+  query getUser($id: ID, $userName: String) {
+    getUser(id: $id, userName: $userName) {
+      id
+      name
+      userName
+      email
+      avatar
+      siteWeb
+      description
+      createAt
+    }
+  }
+`;
+
+export const UPDATE_AVATAR = gql`
+  mutation UpdateAvatar($file: Upload) {
+    updateAvatar(file: $file) {
+      status
+      urlAvatar
+    }
+  }
+`;

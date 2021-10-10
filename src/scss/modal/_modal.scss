@@ -1,0 +1,12 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.ModalBasic {
+    overflow: hidden !important;    
+    
+
+  h2 {
+    font-family: v.$fuente_principal;
+    text-align: center;    
+  }
+}

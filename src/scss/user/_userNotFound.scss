@@ -1,0 +1,16 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.userNot {
+  text-align: center;
+
+  h1,
+  p {
+    font-family: v.$fuente_principal;
+    color: #434343;
+  }
+
+  img {
+    margin: 0 auto;
+  }
+}

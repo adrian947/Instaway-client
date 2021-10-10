@@ -5,11 +5,18 @@ import * as Yup from "yup";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "./../../gql/login";
 import { toast } from "react-toastify";
+import { decodeToken, saveToken } from "../../helpers/constants";
+import { StateContext } from "../../hooks/useAuth";
 
 export const LoginForm = () => {
   const [login] = useMutation(LOGIN);
   const [error, setError] = useState(false);
   const [msg, setMsg] = useState("");
+  // eslint-disable-next-line no-unused-vars
+  const [idToken, setIdToken] = useState("");
+
+  const auth = StateContext();
+  const { setUser } = auth;
 
   const formik = useFormik({
     initialValues: {
@@ -29,7 +36,7 @@ export const LoginForm = () => {
       console.log(formData);
 
       try {
-        const resp = await login({
+        const { data } = await login({
           variables: {
             input: formData,
           },
@@ -45,7 +52,12 @@ export const LoginForm = () => {
           progress: undefined,
         });
 
-        console.log("resp", resp);
+        const { token } = data.login;
+        const decoded = decodeToken(token);
+
+        setIdToken(token);
+        saveToken(token);
+        setUser(decoded);
       } catch (error) {
         console.log("error", error);
         setMsg(error.message);

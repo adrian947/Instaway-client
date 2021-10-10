@@ -1,2 +1,32 @@
-@use '../base/variables' as v;
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
 
+.header {
+  padding: 1rem;
+  border-bottom: 2px solid v.$border-gray;
+
+  &__grid {
+    @include m.telefono {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @include m.tablet {
+      @include m.grid(3, 4rem);
+      align-items: center;
+    }
+    @include m.desktop {
+      @include m.grid(3, 4rem);
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    max-width: 7rem;
+    img {
+      object-fit: contain;
+    }
+  }
+ 
+}
