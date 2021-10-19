@@ -5,7 +5,7 @@ import { LoginForm } from './LoginForm';
 
 
 export const Auth = () => {
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
   
 
   return (

@@ -4,17 +4,20 @@ import client from "./config/apollo";
 import { Auth } from "./Component/auth/Auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { decodeToken, getToken } from "./helpers/constants";
+import { decodeToken, getToken, removeToken } from "./helpers/constants";
 import { AuthContext } from "./context/AuthContext";
 import { Navigation } from "./routes/Navigation";
 
 export const App = () => {
   // eslint-disable-next-line
+
   const [auth, setAuth] = useState(undefined);
   const [urlImage, setUrlImage] = useState("");
 
   useEffect(() => {
     const token = getToken();
+
+    // console.log('token', token )
 
     if (!token) {
       setAuth(null);
@@ -25,27 +28,28 @@ export const App = () => {
   }, []);
 
   const logOut = () => {
-    console.log("deslogueado");
+    removeToken();
+    setAuth(null);
   };
 
   const setUser = (user) => {
     setAuth(user);
   };
-  const setImage = (url)=>{
-    setUrlImage(url)
-  }
+  const setImage = (url) => {
+    setUrlImage(url);
+  };
   const authData = useMemo(
     () => ({
       auth,
       urlImage,
       logOut,
       setUser,
-      setImage
+      setImage,
     }),
     [auth, urlImage]
   );
 
-  if(auth === undefined) return null;
+  if (auth === undefined) return null;
 
   return (
     <ApolloProvider client={client}>

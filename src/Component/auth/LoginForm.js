@@ -20,7 +20,7 @@ export const LoginForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: "pp@p.com",
+      email: "a@a.com",
       password: "123123",
     },
 
@@ -33,7 +33,7 @@ export const LoginForm = () => {
         .min(6),
     }),
     onSubmit: async (formData) => {
-      console.log(formData);
+      
 
       try {
         const { data } = await login({

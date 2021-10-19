@@ -6,39 +6,43 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    @include m.telefono{ 
+    @include m.telefono {
       justify-content: flex-start;
-      
-     }
+    }
   }
-  .right{
-  }
-  
-  
+
   i.icon {
     margin: 0 !important;
     width: 10rem;
     font-size: 2rem;
     display: flex;
     align-items: center;
-    color: #000;
-    
-    
+    color: #262626;
+
     @include m.telefono {
       margin: 0 2rem;
     }
   }
-  &__image {
-    max-width: 3rem;
+  &__containImage {
+    @include m.telefono{ 
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      overflow: hidden;
+     }
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
+    overflow: hidden;
+  }
+  &__image {
+    
     margin: 0 auto;
   }
   &__icon {
-    @include m.telefono{ 
+    cursor: pointer;
+    @include m.telefono {
       margin: 0 auto;
-      
-     }
-    
+    }
   }
-
 }

@@ -21,9 +21,9 @@
 
 @mixin boton($color, $texto) {
   background-color: $color;
-  font-size: 1.4rem;
+  font-size: 1rem;
   padding: 0.5rem;
-  border-radius: 1rem;
+  // border-radius: 1rem;
   font-weight: 400;
   display: block;
   width: 100%;

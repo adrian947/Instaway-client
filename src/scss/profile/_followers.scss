@@ -1,0 +1,26 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.Followers {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+
+  p {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+
+    &.link {
+      cursor: pointer;
+    }
+
+    &:nth-child(1) {
+      padding: 0 1rem 0 0;
+    }
+  }
+  span {
+    color: v.$action;
+    font-weight: bold;
+    margin: 0 5px;
+  }
+}

@@ -1,0 +1,42 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.publications {
+  margin-top: 4rem;
+
+  &__grid {
+    @include m.telefono {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include m.tablet {
+      @include m.grid(3, 1rem);
+    }
+    @include m.desktop {
+      @include m.grid(4, 1rem);
+    }
+  }
+  &__image {
+    border: 2px solid v.$border-gray;
+    padding: 0.3rem;
+    max-height: 22rem;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      cursor: pointer;
+      //   opacity: 0.9;
+      box-shadow: 2px 2px 15px -1px rgba(0, 0, 0, 0.41);
+    }
+    @include m.telefono {
+      margin-bottom: 1rem;
+    }
+
+    img {
+      width: 100%;
+      margin: 0 auto;
+      object-fit: contain;
+      max-height: 18rem;
+    }
+  }
+}

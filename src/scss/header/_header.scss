@@ -13,11 +13,11 @@
     }
 
     @include m.tablet {
-      @include m.grid(3, 4rem);
+      @include m.grid(4, 4rem);
       align-items: center;
     }
     @include m.desktop {
-      @include m.grid(3, 4rem);
+      @include m.grid(4, 4rem);
       align-items: center;
     }
   }
@@ -28,5 +28,14 @@
       object-fit: contain;
     }
   }
+  &__search{
+    grid-column: 2 / 4;
+    @include m.telefono{ 
+      margin: 1rem 0;
+      width: 100%;
+     }
+  }
+
+
  
 }

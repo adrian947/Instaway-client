@@ -1,0 +1,39 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.followModal {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #dbdbdb;
+    width: 100%;
+    transition: background-color .3s ease;
+    &:nth-last-child(1) {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+    &:hover {
+      background-color: v.$action;
+      cursor: pointer;
+      p{
+          color: #fff;
+          transform: scale(1.1);
+      }
+    }
+  }
+  p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+}
+.noFollow{
+    text-align: center;
+    padding: 1rem;
+}
+.followModal__userName{
+    text-align: right;
+    color: v.$font-grey;   
+    font-size: 1rem !important;
+
+}

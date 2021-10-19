@@ -1,0 +1,127 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.modal_publication {
+  padding: 2rem;
+  height: 50rem;
+
+  .modal__grid {
+    @include m.telefono {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    @include m.tablet {
+      height: 100%;
+      @include m.grid(2, 2rem);
+    }
+    @include m.desktop {
+      height: 100%;
+      @include m.grid(2, 2rem);
+    }
+  }
+
+  .modal__image {
+    @include m.telefono {
+      height: 10rem;
+    }
+    height: 100%;
+    // border: 1px solid v.$border-gray;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top center;
+  }
+}
+
+//CommentForm  Component
+
+.modal_comments {
+  @include m.telefono {
+    height: 35rem;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.commentForm {
+  display: flex;
+
+  input {
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid v.$border-gray;
+    outline: none;
+    font-size: 1.2rem;
+    flex: 2;
+    margin-right: 0.5rem;
+  }
+  button {
+    background-color: v.$action;
+    padding: 0.5rem;
+    width: 90px;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    flex: 1;
+    &:hover {
+      background-color: darken(v.$action, 10%);
+      cursor: pointer;
+    }
+  }
+}
+
+.comment {
+  // height: 40%;
+  height: calc(100% - (15rem - 4rem));
+  overflow-y: scroll;
+  
+  
+  .comment__link {
+    
+    display: flex;
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid v.$border-gray;
+    margin: 0;
+    
+    img {
+      @include m.telefono{ 
+        margin: 0;
+       }
+      
+    }
+  }
+  &__userName {
+    color: v.$action;
+    display: block;
+    font-size: .8rem;
+    text-align: right;
+    margin: 0;
+    
+    &::before {
+      content: "UserName: ";
+    }
+  }
+  &__name {
+    color: v.$action;
+    display: block;
+    font-size: .8rem;
+    text-align: right;
+    margin: 0;
+    
+    &::before {
+      content: "Name: ";
+    }
+  }
+  &__comment {
+    text-align: right;
+    font-size: 2rem;
+    color: v.$action;
+    margin: 0;
+  }
+}

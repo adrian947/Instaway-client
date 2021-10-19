@@ -1,0 +1,69 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.modal__upload {
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 8px;
+  height: 650px;
+}
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  border: 3px dashed rgb(158, 151, 151);
+  bottom: 5px;
+
+  .icon {
+    font-size: 5rem;
+    color: rgb(158, 151, 151);
+  }
+  p {
+    color: rgb(158, 151, 151);
+  }
+}
+
+.image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: -1;
+}
+
+.btn__upload{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 4rem;
+    border: none;
+    margin: 0;
+    text-transform: uppercase;
+    background-color: v.$action;
+    color: white;
+    cursor: pointer;
+    opacity: .9;
+    transition: background-color .3s ease;
+
+    &:hover{
+        background-color: darken(v.$action, 10%);
+        
+    }
+    
+}
+.publishing{
+  p{
+    margin-top: 8rem;
+    font-size: 1.8rem;
+  }
+}

@@ -2,6 +2,7 @@ import React from "react";
 import img from "../../assets/png/instaway.png";
 import { Link } from "react-router-dom";
 import { RightHeader } from './RightHeader';
+import { Search } from './Search';
 
 const Header = () => {
   return (
@@ -13,7 +14,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="header__search">
-          <p>Search</p>
+          <Search/>
         </div>
         <div className="header__options">
           <RightHeader/>

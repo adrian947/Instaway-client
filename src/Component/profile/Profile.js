@@ -7,16 +7,19 @@ import { ModalBasic } from "../modal/modalBasic/ModalBasic";
 import { AvatarForm } from "./AvatarForm";
 
 import { StateContext } from "./../../hooks/useAuth";
+import { HeaderProfile } from "./HeaderProfile";
+import { SettingForm } from "./SettingForm";
+import { Followers } from './Followers';
 
-export const Profile = ({ userName }) => {
+export const Profile = ({ userName, dataLength }) => {
   //user logued data
   const { auth, urlImage } = StateContext();
 
-  const { data, loading, error } = useQuery(GET_USER, {
+  const { data, loading, error, refetch } = useQuery(GET_USER, {
     variables: {
       userName: userName,
     },
-  });
+  });  
 
   //handle modal
 
@@ -40,10 +43,23 @@ export const Profile = ({ userName }) => {
         setTitleModal("Change Avatar");
         setShow(true);
         break;
+      case "setting":
+        setChildrenModal(
+          <SettingForm
+            setShow={setShow}
+            setTitleModal={setTitleModal}
+            setChildrenModal={setChildrenModal}
+            refetch={refetch}
+            getUser={getUser}
+          />
+        );
+        setTitleModal("Setting");
+        setShow(true);
+        break;
       default:
         break;
     }
-  }; 
+  };
 
   return (
     <>
@@ -58,8 +74,15 @@ export const Profile = ({ userName }) => {
             />
           </div>
           <div className="main__flex">
-            <div>HeaderProfile</div>
-            <div>follower</div>
+            <div>
+              <HeaderProfile
+                userName={userName}
+                auth={auth}
+                getUser={getUser}
+                openModal={openModal}
+              />
+            </div>
+            <div><Followers userName={userName} dataLength={dataLength}/></div>
             <div className="main__others">
               <p className="main__name">{getUser.name}</p>
               {getUser.siteWeb && (

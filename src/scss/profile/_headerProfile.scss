@@ -1,0 +1,41 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.headerProfile {
+  display: flex;
+  align-items: center;
+
+  @include m.telefono {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  h2 {
+    font-family: v.$fuente_principal;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  &__button {
+    margin-left: 2rem;
+    background-color: v.$action;
+    border: none;
+    color: #fff;
+    font-family: v.$fuente_principal;
+    width: 6rem;
+    height: 2rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(v.$action, 5%);
+    }
+  }
+  &__button--un {
+    margin-left: 2rem;
+    background-color: v.$danger;
+    border: none;
+    color: #fff;
+    font-family: v.$fuente_principal;
+    width: 6rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+}

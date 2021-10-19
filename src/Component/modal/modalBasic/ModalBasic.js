@@ -10,7 +10,7 @@ export const ModalBasic = (props) => {
 
   return (
     <Modal size="mini" open={show} onClose={onClose} className="ModalBasic">
-      {title && <h2>{title}</h2>}
+      {title && <h2 style={{color: "#262626"}}>{title}</h2>}
       {children}
     </Modal>
   );

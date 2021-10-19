@@ -42,3 +42,27 @@ export const DELETE_AVATAR = gql`
     deleteAvatar
   }
 `;
+
+export const UPDATE_USER = gql`
+  mutation updateUser($input: UserUpdatedInput) {
+    updateUser(input: $input)
+  }
+`;
+
+export const SEARCH = gql`
+  query search($search: String) {
+    search(search: $search) {
+      name
+      userName
+      email
+      siteWeb
+      avatar
+    }
+  }
+`;
+
+export const VERIFY_TOKEN = gql`
+  mutation verifyToken($input: verifyToken) {
+    verifyToken(input: $input)
+  }
+`;

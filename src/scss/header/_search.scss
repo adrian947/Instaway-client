@@ -1,0 +1,38 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.searchSu {
+  .ui.left.icon.input {
+    width: 100% !important;
+  }
+}
+
+.prompt {
+  border-radius: 0 !important;
+  &:focus {
+    border-color: darken(v.$border-gray, 10%) !important;
+  }
+}
+.contentSearch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__text {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  &__text--2 {
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: right;
+    color: rgba(88, 82, 82, 0.685);
+  }
+}
+.content__image{
+  width: 5rem !important;
+  height: 5rem !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  object-fit: cover !important;
+}

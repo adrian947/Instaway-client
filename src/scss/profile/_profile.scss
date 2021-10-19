@@ -14,20 +14,30 @@
       @include m.grid(3, 4rem);
     }
   }
+ 
+  
+  
   &__image {
     border-radius: 50%;
     @include m.telefono {
-      width: 5rem;
-      height: 5rem;
+      width: 7rem;
+      height: 7rem;
       margin: 0 auto;
+      object-position: top;
+      object-fit: cover;
     }
     @include m.tablet {
+      
       width: 10rem;
       height: 10rem;
+      object-position: top;
+      object-fit: cover;
     }
     @include m.desktop {
-      width: 15rem;
-      height: 15rem;
+       object-position: top;
+       object-fit: cover;
+       width: 15rem;
+       height: 15rem;
     }
 
     &:hover {
