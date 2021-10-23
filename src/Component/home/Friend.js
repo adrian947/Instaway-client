@@ -1,12 +1,11 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 
-export const Friend = ({user}) => {
-    console.log('publi', user )
-    return (
-        <div className="card">
-
-        <div className="card__user">
+export const Friend = ({ user }) => {
+  console.log("publi", user);
+  return (
+    <div className="card">
+      <div className="card__user">
         <Link to={user.userName}>
           <img
             src={user.avatar}
@@ -19,6 +18,6 @@ export const Friend = ({user}) => {
           <p className="card__userName">{user.userName}</p>
         </div>
       </div>
-        </div>
-    )
-}
+    </div>
+  );
+};

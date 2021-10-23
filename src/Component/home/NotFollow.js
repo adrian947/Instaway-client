@@ -13,7 +13,7 @@ export const NotFollow = () => {
   return (
     <>
       {getNotFollowers.map((user, i) => (
-         <Friend user={user} key={i}/>
+        <Friend user={user} key={i} />
       ))}
     </>
   );
