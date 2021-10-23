@@ -10,7 +10,7 @@
       justify-content: flex-start;
     }
   }
-
+  
   i.icon {
     margin: 0 !important;
     width: 10rem;
@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     color: #262626;
-
+    
     @include m.telefono {
       margin: 0 2rem;
     }
@@ -29,7 +29,7 @@
       height: 5rem;
       border-radius: 50%;
       overflow: hidden;
-     }
+    }
     width: 7rem;
     height: 7rem;
     border-radius: 50%;
@@ -46,3 +46,4 @@
     }
   }
 }
+

@@ -6,7 +6,8 @@
   max-height: 80vh;
 }
 
-.home {
+.homePage {
+  
   padding: 1rem;
   @include m.grid(2, 4rem);
   @include m.telefono {

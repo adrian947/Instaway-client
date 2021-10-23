@@ -14,11 +14,11 @@ export const RegisterForm = ({setShowLogin}) => {
 
   const formik = useFormik({
     initialValues: {
-      name: "adrian",
-      userName: "pp",
-      email: "pp@p.com",
-      password: "123123",
-      rpassword: "123123",
+      name: "",
+      userName: "",
+      email: "",
+      password: "",
+      rpassword: "",
     },
 
     validationSchema: Yup.object({

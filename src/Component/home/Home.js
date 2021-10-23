@@ -38,8 +38,8 @@ export const Home = () => {
   const { getPublicationsFolloweds } = data;
   return (
     <>
-      <div className="home">
-        <div className="home__left">
+      <div className="homePage">
+        <div className="homePage__left">
           <h2 className="feeds__title">Friends posts</h2>
           <div className="container__scroll">
             {getPublicationsFolloweds.map((publi, i) => (
@@ -47,7 +47,7 @@ export const Home = () => {
             ))}
           </div>
         </div>
-        <div className="home__right">
+        <div className="homePage__right">
           <h2 className="feeds__title">Follow more friends</h2>
           <div className="container__scroll">
             <NotFollow />

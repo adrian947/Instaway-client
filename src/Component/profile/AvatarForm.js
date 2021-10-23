@@ -35,7 +35,7 @@ export const AvatarForm = ({ setShow }) => {
   });
 
   const [deleteAvatar] = useMutation(DELETE_AVATAR, {
-    update(cache, {data: {deleteAvatar}}){
+    update(cache, { data: { deleteAvatar } }) {
       const { getUser } = cache.readQuery({
         query: GET_USER,
         variables: {
@@ -51,7 +51,7 @@ export const AvatarForm = ({ setShow }) => {
           getUser: { ...getUser, avatar: "" },
         },
       });
-    }
+    },
   });
 
   const onDrop = useCallback(async (acceptedFiles) => {
@@ -66,7 +66,7 @@ export const AvatarForm = ({ setShow }) => {
         variables: {
           file: {
             status: true,
-            urlAvatar: respCloudinary,
+            urlAvatar: respCloudinary.secure_url,
           },
         },
       });
