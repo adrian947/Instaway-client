@@ -1,0 +1,19 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.actions {
+  display: flex;
+  align-items: center;
+  i.icon {
+    font-size: 1.5rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__number {
+    font-size: 1.5rem;
+  }
+}
+.heart.active {
+    color: v.$danger;
+}

@@ -1,13 +1,14 @@
 import React from "react";
 import { Modal } from "semantic-ui-react";
+import { Actions } from "./Actions";
 import { CommentForm } from "./CommentForm";
-import { Comments } from './Comments';
+import { Comments } from "./Comments";
 
 export const ModalPublication = ({ state, setstate, publi }) => {
   const handleCloseModal = () => {
     setstate(false);
   };
-
+  
   return (
     <div>
       <Modal
@@ -21,8 +22,8 @@ export const ModalPublication = ({ state, setstate, publi }) => {
             style={{ backgroundImage: `url("${publi.file}")` }}
           ></div>
           <div className="modal_comments">
-            <Comments publi={publi}/>
-            <div>Actions</div>
+            <Comments publi={publi} />
+            <Actions publi={publi} />
             <div>
               <CommentForm publi={publi} />
             </div>

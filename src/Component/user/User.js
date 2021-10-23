@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Profile } from "./../profile/Profile";
 import { useQuery } from "@apollo/client";
@@ -7,6 +7,7 @@ import { Publications } from "./../Publications/Publications";
 
 export const User = () => {
   const { userName } = useParams();
+  const [stop, setStop] = useState(false);
 
   const { data, loading, startPolling, stopPolling } = useQuery(
     GET_PUBLICATION,
@@ -16,12 +17,19 @@ export const User = () => {
   );
 
   useEffect(() => {
-    startPolling(1000);
-
+    if (!stop) {
+      startPolling(1000);
+    }
+    setTimeout(() => {
+      setStop(true);
+    }, 10000);
+    
     return () => {
       stopPolling();
+      setStop(true);
     };
-  }, [startPolling, stopPolling]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stop]);
 
   if (loading) return null;
 

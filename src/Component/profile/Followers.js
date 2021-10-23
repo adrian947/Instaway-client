@@ -9,6 +9,8 @@ export const Followers = ({ userName, dataLength }) => {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState("");
   const [children, setChildrenModal] = useState(null);
+  const [stop, setStop] = useState(false);
+  const [stop1, setStop1] = useState(false);
 
   const {
     data,
@@ -33,18 +35,34 @@ export const Followers = ({ userName, dataLength }) => {
   });
 
   useEffect(() => {
-    startPollingFollowers(1000);
+    if (!stop1) {
+      startPollingFollowers(10000);
+    }
+    setTimeout(() => {
+      setStop1(true);
+    }, 300000);
+    
     return () => {
       stopPollingFollowers();
+      setStop1(true);
     };
-  }, [startPollingFollowers, stopPollingFollowers]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stop]);
 
   useEffect(() => {
-    startPollingFollowing(1000);
+    if (!stop) {
+      startPollingFollowing(10000);
+    }
+    setTimeout(() => {
+      setStop(true);
+    }, 300000);
+    
     return () => {
       stopPollingFollowing();
+      setStop(true);
     };
-  }, [startPollingFollowing, stopPollingFollowing]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stop]);
 
   const handleModalFollowers = () => {
     setShow(true);

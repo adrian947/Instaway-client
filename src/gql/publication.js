@@ -15,7 +15,23 @@ export const GET_PUBLICATION = gql`
       id
       idUser
       file
-      typeFile      
+      typeFile
+    }
+  }
+`;
+
+export const GET_PUBLICATION_FOLLOWERS = gql`
+  query getPublicationsFolloweds {
+    getPublicationsFolloweds {
+      id
+      idUser {
+        name
+        userName
+        avatar
+      }
+      file
+      typeFile
+      createAt
     }
   }
 `;
