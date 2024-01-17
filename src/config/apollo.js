@@ -3,7 +3,7 @@ import { setContext } from "apollo-link-context";
 import { getToken } from "../helpers/constants";
 
 const httplink = createHttpLink({
-  uri: "https://instaway.herokuapp.com/",
+  uri: "https://instaway.onrender.com",
   // uri: "http://localhost:4000", 
 });
 
@@ -15,6 +15,7 @@ const authLink = setContext((_, { headers }) => {
       authorization: token ? token : "",
     },
   };
+ 
 });
 
 const client = new ApolloClient({
