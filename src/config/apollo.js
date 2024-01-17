@@ -1,7 +1,7 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
 
 const httplink = createHttpLink({
-  uri: "http://localhost:4000",
+  uri: "https://instaway.onrender.com",
 });
 
 const client = new ApolloClient({
